@@ -14,10 +14,7 @@ module.exports = {
   parserOptions: { project: ["./tsconfig.json"] },
   plugins: ["react-refresh"],
   rules: {
-    "react-refresh/only-export-components": [
-      "warn",
-      { allowConstantExport: true },
-    ],
+    "react-refresh/only-export-components": "off",
 
     // recommended to disable for typescript projects since tsc handles
     "import/named": "off",

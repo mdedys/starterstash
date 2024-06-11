@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 *.code-workspace
+
+simulator/.firebaserc
+simulator/firebase.json
+simulator/firestore.indexes.json
+simulator/firestore.rules
