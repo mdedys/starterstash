@@ -1,11 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import AppController from "./AppController";
 import AuthenticateView from "./authenticate/AuthenticateView";
 
 const router = createBrowserRouter([
   {
-    path: "/auth",
-    element: <AuthenticateView />,
+    element: <AppController />,
+    children: [
+      {
+        path: "/auth",
+        element: <AuthenticateView />,
+      },
+    ],
   },
 ]);
 
