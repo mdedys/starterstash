@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import {
+  PropsWithChildren,
   createContext,
   useCallback,
   useContext,
@@ -25,7 +26,7 @@ type Auth = {
 // @ts-expect-error shortcut to initial state
 const Context = createContext<Auth>({});
 
-export default function AuthProvider() {
+export default function AuthProvider(props: PropsWithChildren) {
   const { auth } = useFirebase();
 
   const [user, setUser] = useState<User | null>(null);
@@ -56,7 +57,7 @@ export default function AuthProvider() {
     [isReady, user, signInAnonymously, signInWithGoogle],
   );
 
-  return <Context.Provider value={value}></Context.Provider>;
+  return <Context.Provider value={value}>{props.children}</Context.Provider>;
 }
 
 export function useAuth() {

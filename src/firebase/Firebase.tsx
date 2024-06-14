@@ -1,6 +1,10 @@
 import { initializeApp, type FirebaseApp } from "firebase/app";
-import { getAuth, type Auth } from "firebase/auth";
-import { getFirestore, type Firestore } from "firebase/firestore/lite";
+import { connectAuthEmulator, getAuth, type Auth } from "firebase/auth";
+import {
+  connectFirestoreEmulator,
+  getFirestore,
+  type Firestore,
+} from "firebase/firestore/lite";
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 
 const CONFIG = {
@@ -24,8 +28,16 @@ const Context = createContext<FirebaseContext>({});
 
 export default function Firebase(props: PropsWithChildren) {
   const [app] = useState(initializeApp(CONFIG));
-  const [db] = useState(getFirestore(app));
-  const [auth] = useState(getAuth(app));
+  const [db] = useState(() => {
+    const _db = getFirestore(app);
+    connectFirestoreEmulator(_db, "localhost", 8080);
+    return _db;
+  });
+  const [auth] = useState(() => {
+    const _auth = getAuth(app);
+    connectAuthEmulator(_auth, "http://localhost:9099");
+    return _auth;
+  });
   return (
     <Context.Provider value={{ app, db, auth }}>
       {props.children}

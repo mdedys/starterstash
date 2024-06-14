@@ -3,6 +3,7 @@ import { styled } from "@linaria/react";
 import { ComponentPropsWithoutRef, PropsWithChildren } from "react";
 
 import * as styles from "./styles";
+import Icons from "../icons/Icons";
 import border from "../styles/border";
 import typography from "../styles/typography";
 
@@ -42,14 +43,18 @@ const sizeVariant = {
 const _Button = styled.button<StyledProps<Props>>`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   border-radius: ${border.md};
   font-weight: 600;
+
+  width: 100%;
 `;
 
-export interface ButtonProps
-  extends Props,
-    ComponentPropsWithoutRef<"button"> {}
+export interface ButtonProps extends Props, ComponentPropsWithoutRef<"button"> {
+  leadingIcon?: keyof typeof Icons;
+  trailingIcon?: keyof typeof Icons;
+}
 
 function Button(props: PropsWithChildren<ButtonProps>) {
   const {
@@ -57,8 +62,14 @@ function Button(props: PropsWithChildren<ButtonProps>) {
     variant = "primary",
     size = "lg",
     children,
+    leadingIcon,
+    trailingIcon,
     ...rest
   } = props;
+
+  const Leading = leadingIcon ? Icons[leadingIcon] : null;
+  const Trailing = trailingIcon ? Icons[trailingIcon] : null;
+
   return (
     <_Button
       className={cx(className, sizeVariant[size], styles.color[variant])}
@@ -66,7 +77,9 @@ function Button(props: PropsWithChildren<ButtonProps>) {
       $size={size}
       {...rest}
     >
+      {Leading && <Leading />}
       {children}
+      {Trailing && <Trailing />}
     </_Button>
   );
 }
