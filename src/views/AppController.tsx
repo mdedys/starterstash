@@ -1,4 +1,5 @@
 import { styled } from "@linaria/react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import { useAuth } from "../auth/AuthProvider";
@@ -14,10 +15,20 @@ const Center = styled.div`
 
 export default function AppController() {
   const auth = useAuth();
-  if (auth.isReady) return <Outlet />;
+
+  const [navigate, setNavigate] = useState(false);
+
+  if (navigate && auth.isReady) {
+    return <Outlet />;
+  }
+
   return (
     <Center>
-      <LoadingIndicator />
+      <LoadingIndicator
+        onLoopComplete={() => {
+          if (!navigate) setNavigate(true);
+        }}
+      />
     </Center>
   );
 }

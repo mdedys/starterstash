@@ -5,6 +5,7 @@ type SizeVariant = "sm" | "md" | "lg";
 
 interface LoadingIndicatorProps {
   size?: SizeVariant;
+  onLoopComplete?(): void;
 }
 
 function size(value: SizeVariant) {
@@ -19,6 +20,7 @@ export default function LoadingIndicator(props: LoadingIndicatorProps) {
     <LottiePlayer
       animationData={LottieJSON}
       style={{ height: _size, width: _size }}
+      onLoopComplete={props.onLoopComplete}
     />
   );
 }
