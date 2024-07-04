@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import { useAuth } from "../auth/AuthProvider";
-import LoadingIndicator from "../ui/loading/LoadingIndicator";
+import LoadingIndicator from "../components/loading/LoadingIndicator";
 
 const Center = styled.div`
   display: flex;

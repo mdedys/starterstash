@@ -3,7 +3,9 @@ FIREBASE_TOOLS_VERSION := "13.11.2"
 build-sim:
   cp .firebaserc ./simulator
   cp firebase.json ./simulator
-  cd simulator && docker build --no-cache --platform linux/x86_64 \
+  cp firestore.rules ./simulator
+  cp firestore.indexes.json ./simulator
+  cd simulator && docker build --platform linux/x86_64 \
     --build-arg FIREBASE_TOOLS_VERSION={{FIREBASE_TOOLS_VERSION}} \
     --tag starterstash/firebase:{{FIREBASE_TOOLS_VERSION}} .
 

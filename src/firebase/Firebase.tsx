@@ -4,13 +4,15 @@ import {
   connectFirestoreEmulator,
   getFirestore,
   type Firestore,
-} from "firebase/firestore/lite";
+} from "firebase/firestore";
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 
 const CONFIG = {
   apiKey: "AIzaSyDX4DLUnsfvBzuKEnOG7vBy-cmsoWpS020",
   authDomain: "starterstash.firebaseapp.com",
-  projectId: "starterstash",
+  // This needs to match the hosted environment or the sim. If this doesn't match
+  // the sim, then the data won't show up
+  projectId: "demo-local",
   storageBucket: "starterstash.appspot.com",
   messagingSenderId: "514079507055",
   appId: "1:514079507055:web:fad4e1e8b5a6770914439a",

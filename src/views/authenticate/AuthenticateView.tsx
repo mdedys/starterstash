@@ -31,12 +31,12 @@ export default function AuthenticateView() {
 
   // Anonymous account
   if (auth.user && auth.user.isAnonymous) {
-    return <Navigate replace to={paths.Authenticate} />;
+    return <Navigate replace to={paths.Anonymous} />;
   }
 
   // Authenticated user
   if (auth.user) {
-    return <Navigate replace to={paths.Authenticate} />;
+    return <Navigate replace to={paths.Home} />;
   }
 
   return (

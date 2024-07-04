@@ -1,5 +1,5 @@
 import LottieJSON from "../../assets/loading-toast.json";
-import LottiePlayer from "../lottie/LottiePlayer";
+import LottiePlayer from "../../ui/lottie/LottiePlayer";
 
 type SizeVariant = "sm" | "md" | "lg";
 

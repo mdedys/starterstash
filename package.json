@@ -21,16 +21,20 @@
     "@linaria/react": "~6.2.1",
     "firebase": "~10.12.2",
     "lottie-web": "~5.12.2",
+    "luxon": "~3.4.4",
     "react": "~18.2.0",
     "react-dom": "~18.2.0",
-    "react-router-dom": "~6.23.1"
+    "react-router-dom": "~6.23.1",
+    "uuid": "~10.0.0"
   },
   "devDependencies": {
     "@babel/preset-react": "~7.24.7",
     "@babel/preset-typescript": "~7.24.7",
+    "@types/luxon": "^3",
     "@types/node": "~20.14.2",
     "@types/react": "~18.2.43",
     "@types/react-dom": "~18.2.17",
+    "@types/uuid": "^10",
     "@typescript-eslint/eslint-plugin": "~6.14.0",
     "@typescript-eslint/parser": "~6.14.0",
     "@vitejs/plugin-react": "~4.2.1",
