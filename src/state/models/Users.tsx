@@ -1,7 +1,17 @@
-import { FirestoreDataConverter } from "firebase/firestore";
+import {
+  FirestoreDataConverter,
+  Timestamp,
+  serverTimestamp,
+} from "firebase/firestore";
 import { DateTime } from "luxon";
 
-type Starter = {
+type FirestoreStarter = {
+  name: string;
+  reminder: number;
+  repeatInterval: boolean;
+};
+
+export type Starter = {
   name: string;
   reminder: DateTime;
   repeatInterval: boolean;
@@ -11,21 +21,32 @@ export class UserDocument {
   id: string;
   uid: string;
   starters: Starter[];
-  createdAt: DateTime;
-  updatedAt: DateTime;
+
+  createdAt?: DateTime;
+  updatedAt?: DateTime;
 
   constructor(
     uid: string,
     id: string,
-    starters = [],
-    createdAt?: string,
-    updatedAt?: string,
+    starters: FirestoreStarter[] = [],
+    createdAt?: DateTime,
+    updatedAt?: DateTime,
   ) {
     this.id = id;
     this.uid = uid;
-    this.starters = starters;
-    this.createdAt = createdAt ? DateTime.fromISO(createdAt) : DateTime.now();
-    this.updatedAt = updatedAt ? DateTime.fromISO(updatedAt) : DateTime.now();
+
+    this.starters = starters.map(s => ({
+      ...s,
+      reminder: DateTime.fromMillis(s.reminder),
+    }));
+
+    if (createdAt) {
+      this.createdAt = createdAt;
+    }
+
+    if (updatedAt) {
+      this.updatedAt = updatedAt;
+    }
   }
 }
 
@@ -36,10 +57,31 @@ export const converter: FirestoreDataConverter<UserDocument> = {
     return {
       id: data.id,
       uid: data.uid,
+      staters: data.starters.map(s => ({
+        ...s,
+        reminder: s.reminder.toMillis(),
+      })),
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
     };
   },
   fromFirestore: (snapshot, options) => {
-    const data = snapshot.data(options);
-    return new UserDocument(data.uid, data.id, data.createdAt, data.updatedAt);
+    const data = snapshot.data({ ...options, serverTimestamps: "estimate" });
+
+    const createdAt = DateTime.fromMillis(
+      (data.createdAt as Timestamp).toMillis(),
+    );
+
+    const updatedAt = DateTime.fromMillis(
+      (data.updatedAt as Timestamp).toMillis(),
+    );
+
+    return new UserDocument(
+      data.uid,
+      data.id,
+      data.starters,
+      createdAt,
+      updatedAt,
+    );
   },
 };

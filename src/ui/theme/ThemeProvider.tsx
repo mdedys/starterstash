@@ -55,6 +55,8 @@ function getTheme(mode: Theme) {
     [vars.colors.foreground.quaternary.hover]: fg.quaternary.hover,
     [vars.colors.foreground.quaternary.main]: fg.quaternary.main,
     [vars.colors.foreground.quaternary.hover]: fg.quaternary.hover,
+    [vars.colors.foreground.quinary.main]: fg.quinary.main,
+    [vars.colors.foreground.quinary.hover]: fg.quinary.hover,
     [vars.colors.foreground.senary]: fg.senary,
     [vars.colors.foreground.white]: fg.white,
     [vars.colors.foreground.disabled.main]: fg.disabled.main,

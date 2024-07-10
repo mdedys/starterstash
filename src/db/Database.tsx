@@ -3,7 +3,6 @@ import {
   DocumentReference,
   DocumentSnapshot,
   FirestoreDataConverter,
-  doc,
   getDoc,
   setDoc,
   updateDoc,
@@ -11,10 +10,6 @@ import {
   Unsubscribe,
 } from "firebase/firestore";
 import { PropsWithChildren, createContext, useContext, useMemo } from "react";
-
-import { useFirebase } from "../firebase/Firebase";
-
-const KEY_USERS_DOC = "users";
 
 type DatabaseContext = {
   getDoc<T>(
@@ -32,19 +27,13 @@ type DatabaseContext = {
     value: T,
     converter: FirestoreDataConverter<T>,
   ): Promise<void>;
-  updateDoc<T>(
-    uid: string,
-    value: Partial<T>,
-    converter: FirestoreDataConverter<T>,
-  ): Promise<void>;
+  updateDoc(ref: DocumentReference, value: DocumentData): Promise<void>;
 };
 
 // @ts-expect-error defining default context
 const Context = createContext<DatabaseContext>({});
 
 export default function Database(props: PropsWithChildren) {
-  const { db } = useFirebase();
-
   const value = useMemo<DatabaseContext>(
     () => ({
       getDoc: function _getDoc<T = DocumentData>(
@@ -69,17 +58,14 @@ export default function Database(props: PropsWithChildren) {
         return setDoc(ref.withConverter(converter), value);
       },
       updateDoc: function _updateDoc<T>(
-        uid: string,
+        ref: DocumentReference<T>,
         value: Partial<T>,
-        converter: FirestoreDataConverter<T>,
       ) {
-        const ref = doc(db, KEY_USERS_DOC, uid);
-        return updateDoc(ref.withConverter(converter), value);
+        return updateDoc(ref, value);
       },
     }),
-    [db],
+    [],
   );
-
   return <Context.Provider value={value}>{props.children}</Context.Provider>;
 }
 

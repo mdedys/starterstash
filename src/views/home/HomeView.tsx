@@ -44,7 +44,7 @@ export default function HomeView() {
 
   console.log(user.data);
   if (user.data.starters.length === 0) {
-    return <EmptyListView />;
+    return <EmptyListView uid={uid} />;
   }
 
   return <div>Hello {user.data.uid} </div>;

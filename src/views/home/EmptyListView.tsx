@@ -1,10 +1,13 @@
 import { styled } from "@linaria/react";
+import { useState } from "react";
 
 import StarterJar from "../../assets/starter_jar.svg";
 import Logo from "../../components/Logo";
-import { Body, Header, Layout } from "../Layout";
-import Typography from "../../ui/typography/Typography";
+import AddStarterModal from "../../components/modals/AddStarterModal";
+import useAddStarter from "../../state/mutations/useAddStarter";
 import Button from "../../ui/button/Button";
+import Typography from "../../ui/typography/Typography";
+import { Body, Header, Layout } from "../Layout";
 
 const Content = styled.div`
   display: flex;
@@ -20,35 +23,60 @@ const Graphic = styled.img`
   margin-bottom: 1.5rem;
 `;
 
-export default function EmptyListView() {
+interface EmptyListViewProps {
+  uid: string;
+}
+
+export default function EmptyListView(props: EmptyListViewProps) {
+  const add = useAddStarter(props.uid);
+
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Layout>
-      <Header>
-        <Logo width={140} />
-      </Header>
-      <Body>
-        <Content>
-          <Graphic src={StarterJar} alt="jar of sourdough starter" />
-          <Typography size="md" variant="text" weight="600">
-            No Sourdough Starters Found
-          </Typography>
-          <Typography
-            variant="text"
-            size="sm"
-            style={{
-              textAlign: "center",
-              marginTop: "0.25rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            No active sourdough starters have been found. Click the button below
-            to add a sourdough starer.
-          </Typography>
-          <Button variant="primary" size="sm" leadingIcon="plus">
-            Add Stater
-          </Button>
-        </Content>
-      </Body>
-    </Layout>
+    <>
+      <Layout>
+        <Header>
+          <Logo width={140} />
+        </Header>
+        <Body>
+          <Content>
+            <Graphic src={StarterJar} alt="jar of sourdough starter" />
+            <Typography size="md" variant="text" weight="600">
+              No Sourdough Starters Found
+            </Typography>
+            <Typography
+              variant="text"
+              size="sm"
+              style={{
+                textAlign: "center",
+                marginTop: "0.25rem",
+                marginBottom: "1.5rem",
+              }}
+            >
+              No active sourdough starters have been found. Click the button
+              below to add a sourdough starer.
+            </Typography>
+            <Button
+              variant="primary"
+              size="sm"
+              leadingIcon="plus"
+              onClick={() => setIsOpen(true)}
+            >
+              Add Stater
+            </Button>
+          </Content>
+        </Body>
+      </Layout>
+      <AddStarterModal
+        isOpen={isOpen}
+        onCancel={() => setIsOpen(false)}
+        onSave={starter =>
+          add
+            .mutate(starter)
+            .then(() => setIsOpen(false))
+            .catch(err => console.log(err))
+        }
+      />
+    </>
   );
 }

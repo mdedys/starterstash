@@ -46,6 +46,7 @@ const _Button = styled.button<StyledProps<Props>>`
   justify-content: center;
 
   border-radius: ${border.md};
+  cursor: pointer;
   font-weight: 600;
 
   width: 100%;
