@@ -22,6 +22,24 @@ export const color = {
       box-shadow: ${focus.shadow.brandxs};
       color: ${cssvar(vars.button.primary.fg)};
     }
+    &.destructive {
+      border-color: ${cssvar(vars.button.error.primary.border)};
+      background-color: ${cssvar(vars.button.error.primary.bg)};
+      color: ${cssvar(vars.colors.foreground.white)};
+    }
+
+    &:hover.destructive {
+      border-color: ${cssvar(vars.button.error.primary.borderhover)};
+      background-color: ${cssvar(vars.button.error.primary.bghover)};
+      color: ${cssvar(vars.colors.foreground.white)};
+    }
+
+    &.destructive:active {
+      border-color: ${cssvar(vars.button.error.primary.border)};
+      background-color: ${cssvar(vars.button.error.primary.bg)};
+      color: ${cssvar(vars.colors.foreground.white)};
+      box-shadow: ${focus.shadow.errorxs};
+    }
   `,
   secondary: css`
     background: ${cssvar(vars.button.secondary.bg)};
@@ -37,6 +55,25 @@ export const color = {
       border: 1px solid ${cssvar(vars.button.secondary.border)};
       box-shadow: ${focus.shadow.grayxs};
       color: ${cssvar(vars.button.secondary.fg)};
+    }
+
+    &.destructive {
+      border-color: ${cssvar(vars.button.error.secondary.border)};
+      background-color: ${cssvar(vars.button.error.secondary.bg)};
+      color: ${cssvar(vars.button.error.secondary.fg)};
+    }
+
+    &:hover.destructive {
+      border-color: ${cssvar(vars.button.error.secondary.borderhover)};
+      background-color: ${cssvar(vars.button.error.secondary.bghover)};
+      color: ${cssvar(vars.button.error.secondary.fghover)};
+    }
+
+    &.destructive:active {
+      border-color: ${cssvar(vars.button.error.secondary.border)};
+      background-color: ${cssvar(vars.button.error.secondary.bg)};
+      color: ${cssvar(vars.button.error.secondary.fg)};
+      box-shadow: ${focus.shadow.errorxs};
     }
   `,
   tertiary: css`

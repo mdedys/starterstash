@@ -3,8 +3,10 @@ import { useState } from "react";
 
 import StarterJar from "../../assets/starter_jar.svg";
 import Logo from "../../components/Logo";
+import DeleteConfirmationModal from "../../components/modals/starter/DeleteConfirmationmModal";
 import StarterEditorModal from "../../components/modals/starter/StarterEditorModal";
 import { Starter } from "../../state/models/Users";
+import useDeleteStarter from "../../state/mutations/useDeleteStarter";
 import useUpdateStarter from "../../state/mutations/useUpdateStarter";
 import Button from "../../ui/button/Button";
 import IconButton from "../../ui/button/IconButton";
@@ -45,8 +47,10 @@ interface SingleStarterViewProps {
 
 export default function SingleStarterView(props: SingleStarterViewProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const edit = useUpdateStarter(props.uid);
+  const del = useDeleteStarter(props.uid);
 
   return (
     <>
@@ -81,9 +85,24 @@ export default function SingleStarterView(props: SingleStarterViewProps) {
           mode="edit"
           starter={props.starter}
           onSave={starter => {
-            edit.mutate(starter);
+            edit.mutate(starter).then(() => setIsModalOpen(false));
+          }}
+          onDelete={() => {
+            setIsModalOpen(false);
+            setIsDeleteModalOpen(true);
           }}
           onCancel={() => setIsModalOpen(false)}
+        />
+      )}
+      {isDeleteModalOpen && (
+        <DeleteConfirmationModal
+          onDelete={() => {
+            del.mutate(props.starter);
+          }}
+          onCancel={() => {
+            setIsDeleteModalOpen(false);
+            setIsModalOpen(true);
+          }}
         />
       )}
     </>

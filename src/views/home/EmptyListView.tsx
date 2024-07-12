@@ -6,6 +6,7 @@ import Logo from "../../components/Logo";
 import StarterEditorModal from "../../components/modals/starter/StarterEditorModal";
 import useAddStarter from "../../state/mutations/useAddStarter";
 import Button from "../../ui/button/Button";
+import IconButton from "../../ui/button/IconButton";
 import Typography from "../../ui/typography/Typography";
 import { Body, Header, Layout } from "../Layout";
 
@@ -37,6 +38,7 @@ export default function EmptyListView(props: EmptyListViewProps) {
       <Layout>
         <Header>
           <Logo width={140} />
+          <IconButton icon="menu" variant="tertiary" size="sm" />
         </Header>
         <Body>
           <Content>

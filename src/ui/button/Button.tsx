@@ -53,6 +53,7 @@ const _Button = styled.button<StyledProps<Props>>`
 `;
 
 export interface ButtonProps extends Props, ComponentPropsWithoutRef<"button"> {
+  destructive?: boolean;
   leadingIcon?: keyof typeof Icons;
   trailingIcon?: keyof typeof Icons;
 }
@@ -65,15 +66,22 @@ function Button(props: PropsWithChildren<ButtonProps>) {
     children,
     leadingIcon,
     trailingIcon,
+    destructive = false,
     ...rest
   } = props;
 
   const Leading = leadingIcon ? Icons[leadingIcon] : null;
   const Trailing = trailingIcon ? Icons[trailingIcon] : null;
+  const destructiveClass = destructive ? "destructive" : "";
 
   return (
     <_Button
-      className={cx(className, sizeVariant[size], styles.color[variant])}
+      className={cx(
+        className,
+        sizeVariant[size],
+        styles.color[variant],
+        destructiveClass,
+      )}
       $variant={variant}
       $size={size}
       {...rest}

@@ -164,6 +164,22 @@ const button = {
     fghover: "--button-color-tertiarycolor-fg-hover",
     bghover: "--button-color-tertiarycolor-bg-hover",
   },
+  error: {
+    primary: {
+      border: "--button-color-primary-error-border",
+      borderhover: "--button-color-primary-error-border-hover",
+      bg: "--button-color-primary-error-bg",
+      bghover: "--button-colors-primary-error-bg-hover",
+    },
+    secondary: {
+      border: "--button-color-secondary-error-border",
+      borderhover: "--button-color-secondary-error-border-hover",
+      bg: "--button-color-secondary-error-bg",
+      bghover: "--button-colors-secondary-error-bg-hover",
+      fg: "--button-color-secondary-error-fg",
+      fghover: "--button-color-secondary-error-fg-hover",
+    },
+  },
 };
 
 export const vars = {

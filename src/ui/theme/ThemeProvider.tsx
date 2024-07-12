@@ -121,6 +121,17 @@ function getTheme(mode: Theme) {
     [vars.button.tertiarycolor.fg]: button.tertiarycolor.fg,
     [vars.button.tertiarycolor.fghover]: button.tertiarycolor.fghover,
     [vars.button.tertiarycolor.bghover]: button.tertiarycolor.bghover,
+    [vars.button.error.primary.bg]: button.error.primary.bg,
+    [vars.button.error.primary.bghover]: button.error.primary.bghover,
+    [vars.button.error.primary.border]: button.error.primary.border,
+    [vars.button.error.primary.borderhover]: button.error.primary.borderhover,
+    [vars.button.error.secondary.bg]: button.error.secondary.bg,
+    [vars.button.error.secondary.bghover]: button.error.secondary.bghover,
+    [vars.button.error.secondary.fg]: button.error.secondary.fg,
+    [vars.button.error.secondary.fghover]: button.error.secondary.fghover,
+    [vars.button.error.secondary.border]: button.error.secondary.border,
+    [vars.button.error.secondary.borderhover]:
+      button.error.secondary.borderhover,
   };
 }
 

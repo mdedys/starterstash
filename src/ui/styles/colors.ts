@@ -312,6 +312,22 @@ const button = {
       fghover: _colors.primary.brand[800],
       bghover: _colors.primary.brand[50],
     },
+    error: {
+      primary: {
+        border: _colors.primary.error[600],
+        borderhover: _colors.primary.error[700],
+        bg: _colors.primary.error[600],
+        bghover: _colors.primary.error[700],
+      },
+      secondary: {
+        border: _colors.primary.error[300],
+        borderhover: _colors.primary.error[300],
+        bg: _colors.primary.base.white,
+        bghover: _colors.primary.error[50],
+        fg: _colors.primary.error[700],
+        fghover: _colors.primary.error[800],
+      },
+    },
   },
   dark: {
     primary: {
@@ -339,6 +355,22 @@ const button = {
       fg: _colors.primary.graydark[300],
       fghover: _colors.primary.graydark[100],
       bghover: _colors.primary.graydark[800],
+    },
+    error: {
+      primary: {
+        border: _colors.primary.error[600],
+        borderhover: _colors.primary.error[700],
+        bg: _colors.primary.error[600],
+        bghover: _colors.primary.error[700],
+      },
+      secondary: {
+        border: _colors.primary.error[300],
+        borderhover: _colors.primary.error[300],
+        bg: _colors.primary.base.white,
+        bghover: _colors.primary.error[50],
+        fg: _colors.primary.error[700],
+        fghover: _colors.primary.error[800],
+      },
     },
   },
 };

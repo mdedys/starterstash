@@ -49,6 +49,7 @@ interface AddStarterModalProps {
   starter?: Starter;
   onSave(starter: Starter): void;
   onCancel(): void;
+  onDelete?(): void;
 }
 
 export default function StarterEditorModal(props: AddStarterModalProps) {
@@ -117,6 +118,11 @@ export default function StarterEditorModal(props: AddStarterModalProps) {
           <Button variant="primary" size="lg" onClick={onClickSave}>
             {props.mode === "new" ? "Create" : "Save"}
           </Button>
+          {props.mode === "edit" && (
+            <Button variant="secondary" destructive onClick={props.onDelete}>
+              Delete
+            </Button>
+          )}
           <Button
             variant="secondary"
             size="lg"
