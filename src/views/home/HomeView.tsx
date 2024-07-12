@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
+import EmptyListView from "./EmptyListView";
+import SingleStarterView from "./SingleStarterView";
 import { useAuth } from "../../auth/AuthProvider";
 import { UserDocument } from "../../state/models/Users";
 import useCreateUser from "../../state/mutations/useCreateUser";
 import useGetUser from "../../state/queries/useGetUser";
 import paths from "../paths";
-import EmptyListView from "./EmptyListView";
 
 interface CreateUserProps {
   uid: string;
@@ -42,9 +43,12 @@ export default function HomeView() {
     return <Navigate to={paths.Authenticate} />;
   }
 
-  console.log(user.data);
   if (user.data.starters.length === 0) {
     return <EmptyListView uid={uid} />;
+  }
+
+  if (user.data.starters.length === 1) {
+    return <SingleStarterView uid={uid} starter={user.data.starters[0]} />;
   }
 
   return <div>Hello {user.data.uid} </div>;

@@ -5,13 +5,15 @@ import {
 } from "firebase/firestore";
 import { DateTime } from "luxon";
 
-type FirestoreStarter = {
+export type FirestoreStarter = {
+  id: string;
   name: string;
   reminder: number;
   repeatInterval: boolean;
 };
 
 export type Starter = {
+  id: string;
   name: string;
   reminder: DateTime;
   repeatInterval: boolean;

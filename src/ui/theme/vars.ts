@@ -127,7 +127,7 @@ const colors = {
     warning: {
       main: "--color-fg-warning",
       secondary: "--color-warning-secondary",
-      solid: "--color-bg-success-solid",
+      solid: "--color-bg-warning-solid",
     },
     success: {
       main: "--color-fg-success",

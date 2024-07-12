@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import StarterJar from "../../assets/starter_jar.svg";
 import Logo from "../../components/Logo";
-import AddStarterModal from "../../components/modals/AddStarterModal";
+import StarterEditorModal from "../../components/modals/starter/StarterEditorModal";
 import useAddStarter from "../../state/mutations/useAddStarter";
 import Button from "../../ui/button/Button";
 import Typography from "../../ui/typography/Typography";
@@ -67,16 +67,18 @@ export default function EmptyListView(props: EmptyListViewProps) {
           </Content>
         </Body>
       </Layout>
-      <AddStarterModal
-        isOpen={isOpen}
-        onCancel={() => setIsOpen(false)}
-        onSave={starter =>
-          add
-            .mutate(starter)
-            .then(() => setIsOpen(false))
-            .catch(err => console.log(err))
-        }
-      />
+      {isOpen && (
+        <StarterEditorModal
+          mode="new"
+          onCancel={() => setIsOpen(false)}
+          onSave={starter =>
+            add
+              .mutate(starter)
+              .then(() => setIsOpen(false))
+              .catch(err => console.log(err))
+          }
+        />
+      )}
     </>
   );
 }

@@ -3,7 +3,7 @@ import { css } from "@linaria/core";
 import focus from "../styles/focus";
 import { cssvar, vars } from "../theme/vars";
 
-export type Variant = "primary" | "secondary" | "link";
+export type Variant = "primary" | "secondary" | "link" | "tertiary";
 export type Size = "sm" | "md" | "lg" | "xl" | "2xl";
 
 export const color = {
@@ -36,6 +36,18 @@ export const color = {
       background: ${cssvar(vars.button.secondary.bg)};
       border: 1px solid ${cssvar(vars.button.secondary.border)};
       box-shadow: ${focus.shadow.grayxs};
+      color: ${cssvar(vars.button.secondary.fg)};
+    }
+  `,
+  tertiary: css`
+    background: transparent;
+    border: none;
+    color: ${cssvar(vars.button.tertiary.fg)};
+    &:hover {
+      background: ${cssvar(vars.button.secondary.bghover)};
+      color: ${cssvar(vars.button.tertiary.fghover)};
+    }
+    &:active {
       color: ${cssvar(vars.button.secondary.fg)};
     }
   `,
