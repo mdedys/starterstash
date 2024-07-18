@@ -3,7 +3,7 @@ import Icons, { IconProps } from "./Icon";
 export default function GoogleLogo(props: IconProps) {
   return (
     <Icons {...props}>
-      <g clip-path="url(#clip0_1256_130935)">
+      <g clipPath="url(#clip0_1256_130935)">
         <path
           d="M23.7663 12.2764C23.7663 11.4607 23.7001 10.6406 23.559 9.83807H12.2402V14.4591H18.722C18.453 15.9494 17.5888 17.2678 16.3233 18.1056V21.1039H20.1903C22.4611 19.0139 23.7663 15.9274 23.7663 12.2764Z"
           fill="#4285F4"

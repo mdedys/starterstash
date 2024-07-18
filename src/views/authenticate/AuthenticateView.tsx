@@ -70,13 +70,6 @@ export default function AuthenticateView() {
         >
           Sign in with Google
         </Button>
-        <Button
-          variant="primary"
-          size="lg"
-          onClick={() => auth.signInAnonymously()}
-        >
-          Go Anonymous
-        </Button>
       </Centered>
     </Grid>
   );
