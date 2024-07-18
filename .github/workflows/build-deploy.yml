@@ -10,20 +10,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Environment
+      - name: Setup environment
         uses: actions/setup-node@v4
         with:
           node_version: latest
 
-      - name: Enable Corepack
+      - name: Enable corepack
         shell: bash
         run: corepack enable
 
-      - name: Test App
+      - name: Install dependencies
+        shell: bash
+        run: yarn install --immutable --inline-builds
+
+      - name: Test app
         shell: bash
         run: yarn test
 
-      - name: Deploy App
+      - name: Deploy app
         uses: netlify/actions/build@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
