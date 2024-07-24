@@ -1,4 +1,6 @@
 import { styled } from "@linaria/react";
+/* eslint-disable-next-line */
+import { useRegisterSW } from "virtual:pwa-register/react";
 
 import Button from "../../../ui/button/Button";
 import Modal from "../../../ui/modal/Modal";
@@ -17,47 +19,50 @@ const Content = styled.div`
   width: 100%;
 `;
 
-const Footer = styled.div`
-  border-top: 1px solid ${cssvar(vars.colors.border.secondary)};
-
-  padding: ${spacing["2xl"].rem} ${spacing.xl.px};
-`;
-
 const Group = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing.lg.px};
 `;
 
-interface DeleteConfirmationModalProps {
-  onDelete(): void;
-  onCancel(): void;
-}
+const Footer = styled.div`
+  border-top: 1px solid ${cssvar(vars.colors.border.secondary)};
 
-export default function DeleteConfirmationModal(
-  props: DeleteConfirmationModalProps,
-) {
+  padding: ${spacing["2xl"].rem} ${spacing.xl.px};
+`;
+
+export default function UpdatePrompt() {
+  const {
+    needRefresh: [needRefresh, setNeedRefresh],
+    updateServiceWorker,
+  } = useRegisterSW();
+
+  if (!needRefresh) return null;
+
   return (
     <Modal>
       <Header>
         <Typography variant="text" size="lg" weight="600">
-          Delete Starter Confirmation
+          New Version Found
         </Typography>
       </Header>
       <Content>
         <Typography variant="text" size="md">
-          Are you sure you want to delete this starter? This action cannot be
-          undone and you will permanently lose all data associated with this
-          resource.
+          There is a new version of the application available. Would you like to
+          update now? This will cause unsaved changes to be lost.
         </Typography>
       </Content>
       <Footer>
         <Group>
-          <Button variant="primary" destructive onClick={props.onDelete}>
-            Delete
+          <Button variant="primary" onClick={() => updateServiceWorker(true)}>
+            Update Now
           </Button>
-          <Button variant="secondary" size="lg" onClick={props.onCancel}>
-            Cancel
+          <Button
+            variant="secondary"
+            size="lg"
+            onClick={() => setNeedRefresh(false)}
+          >
+            Not Right Now
           </Button>
         </Group>
       </Footer>

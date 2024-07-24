@@ -51,7 +51,8 @@
     "tsx": "~4.14.0",
     "type-fest": "~4.9.0",
     "typescript": "~5.2.2",
-    "vite": "~5.0.8"
+    "vite": "~5.0.8",
+    "vite-plugin-pwa": "~0.20.0"
   },
   "packageManager": "yarn@4.0.2"
 }
