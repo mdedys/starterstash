@@ -23,7 +23,7 @@ jobs:
         shell: bash
         run: yarn install --immutable --inline-builds
 
-      - name: Build App
+      - name: Build app
         shell: bash
         run: yarn build
 
@@ -34,3 +34,7 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+      - name: Deploy firestore rules
+        shell: bash
+        run: yarn deploy:firestore:rules
