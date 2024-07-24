@@ -35,6 +35,12 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: "${{ secrets.FIREBASE_TOKEN }}"
+          export_environment_variables: true
+
       - name: Deploy firestore rules
         shell: bash
         run: yarn deploy:firestore:rules
