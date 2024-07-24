@@ -9,6 +9,7 @@ import Button from "../../ui/button/Button";
 import IconButton from "../../ui/button/IconButton";
 import Typography from "../../ui/typography/Typography";
 import { Body, Header, Layout } from "../Layout";
+import UserSettingsMenu from "../../components/menu/UserSettingsMenu";
 
 const Content = styled.div`
   display: flex;
@@ -32,13 +33,23 @@ export default function EmptyListView(props: EmptyListViewProps) {
   const add = useAddStarter(props.uid);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   return (
     <>
+      <UserSettingsMenu
+        isOpen={isSettingsOpen}
+        onClickClose={() => setIsSettingsOpen(false)}
+      />
       <Layout>
         <Header>
           <Logo width={140} />
-          <IconButton icon="menu" variant="tertiary" size="sm" />
+          <IconButton
+            icon="menu"
+            variant="tertiary"
+            size="sm"
+            onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+          />
         </Header>
         <Body>
           <Content>

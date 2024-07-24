@@ -1,12 +1,15 @@
 import { styled } from "@linaria/react";
 
+import spacing from "../ui/styles/spacing";
+
 export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   grid-area: header;
 
-  padding: 0 16px;
+  padding: 0 ${spacing.xl.px};
+  padding-top: ${spacing["3xl"].px};
   height: 64px;
 `;
 

@@ -27,10 +27,11 @@ interface LogoProps {
   height?: number;
   width?: number;
   style?: Omit<CSSProperties, "width" | "height">;
+  beta?: boolean;
 }
 
 export default function Logo(props: LogoProps) {
-  const { height = 28, width = 180, style } = props;
+  const { height = 28, width = 180, style, beta = true } = props;
   return (
     <Flex>
       <Image
@@ -40,11 +41,13 @@ export default function Logo(props: LogoProps) {
         height={`${height}px`}
         style={{ ...style, height, width }}
       />
-      <Beta>
-        <Typography variant="text" size="xs" weight="700">
-          BETA
-        </Typography>
-      </Beta>
+      {beta && (
+        <Beta>
+          <Typography variant="text" size="xs" weight="700">
+            BETA
+          </Typography>
+        </Beta>
+      )}
     </Flex>
   );
 }

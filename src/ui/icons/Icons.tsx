@@ -9,6 +9,7 @@ import InfoCircle from "./assets/InfoCircle";
 import Menu from "./assets/Menu";
 import Plus from "./assets/Plus";
 import UploadCloud from "./assets/UploadCloud";
+import XClose from "./assets/XClose";
 
 type IconType = FC<Omit<IconProps, "children">>;
 
@@ -21,6 +22,7 @@ type IconMap = {
   menu: IconType;
   plus: IconType;
   "upload-cloud": IconType;
+  "x-close": IconType;
 };
 
 const Icons: IconMap = {
@@ -32,6 +34,7 @@ const Icons: IconMap = {
   menu: Menu,
   plus: Plus,
   "upload-cloud": UploadCloud,
+  "x-close": XClose,
 };
 
 export default Icons;
