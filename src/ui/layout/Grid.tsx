@@ -1,22 +1,24 @@
 import { styled } from "@linaria/react";
 
 import breakpoints from "../styles/breakpoints";
+import spacing from "../styles/spacing";
 import widths from "../styles/widths";
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 100%;
-  gap: 16px;
+  gap: ${spacing.xl.px};
 
   width: 100%;
-  padding: 0 16px;
+  margin: 0 auto;
+  padding: 0 ${spacing.xl.px};
 
   @media (min-width: ${breakpoints.mobile.px}) {
     grid-template-columns: repeat(6, 1fr);
-    gap: 32px;
+    gap: ${spacing["4xl"].px};
 
-    padding: 0 32px;
+    padding: 0 ${spacing["4xl"].px};
   }
 
   @media (min-width: ${breakpoints.tablet.px}) {

@@ -3,13 +3,14 @@ import { useState } from "react";
 
 import StarterJar from "../../assets/starter_jar.svg";
 import Logo from "../../components/Logo";
+import UserSettingsMenu from "../../components/menu/UserSettingsMenu";
 import StarterEditorModal from "../../components/modals/starter/StarterEditorModal";
 import useAddStarter from "../../state/mutations/useAddStarter";
 import Button from "../../ui/button/Button";
 import IconButton from "../../ui/button/IconButton";
+import widths from "../../ui/styles/widths";
 import Typography from "../../ui/typography/Typography";
-import { Body, Header, Layout } from "../Layout";
-import UserSettingsMenu from "../../components/menu/UserSettingsMenu";
+import { Body, Header, Layout, View } from "../Layout";
 
 const Content = styled.div`
   display: flex;
@@ -18,6 +19,8 @@ const Content = styled.div`
   flex-direction: column;
 
   height: 100%;
+  max-width: ${widths.sm.px};
+  margin: 0 auto;
   padding: 0 32px;
 `;
 
@@ -33,53 +36,37 @@ export default function EmptyListView(props: EmptyListViewProps) {
   const add = useAddStarter(props.uid);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   return (
     <>
-      <UserSettingsMenu
-        isOpen={isSettingsOpen}
-        onClickClose={() => setIsSettingsOpen(false)}
-      />
-      <Layout>
-        <Header>
-          <Logo width={140} />
-          <IconButton
-            icon="menu"
-            variant="tertiary"
+      <View>
+        <Content>
+          <Graphic src={StarterJar} alt="jar of sourdough starter" />
+          <Typography size="md" variant="text" weight="600">
+            No Sourdough Starters Found
+          </Typography>
+          <Typography
+            variant="text"
             size="sm"
-            onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-          />
-        </Header>
-        <Body>
-          <Content>
-            <Graphic src={StarterJar} alt="jar of sourdough starter" />
-            <Typography size="md" variant="text" weight="600">
-              No Sourdough Starters Found
-            </Typography>
-            <Typography
-              variant="text"
-              size="sm"
-              style={{
-                textAlign: "center",
-                marginTop: "0.25rem",
-                marginBottom: "1.5rem",
-              }}
-            >
-              No active sourdough starters have been found. Click the button
-              below to add a sourdough starer.
-            </Typography>
-            <Button
-              variant="primary"
-              size="sm"
-              leadingIcon="plus"
-              onClick={() => setIsOpen(true)}
-            >
-              Add Stater
-            </Button>
-          </Content>
-        </Body>
-      </Layout>
+            style={{
+              textAlign: "center",
+              marginTop: "0.25rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            No active sourdough starters have been found. Click the button below
+            to add a sourdough starer.
+          </Typography>
+          <Button
+            variant="primary"
+            size="sm"
+            leadingIcon="plus"
+            onClick={() => setIsOpen(true)}
+          >
+            Add Stater
+          </Button>
+        </Content>
+      </View>
       {isOpen && (
         <StarterEditorModal
           mode="new"

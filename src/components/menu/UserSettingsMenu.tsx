@@ -1,26 +1,16 @@
 import { styled } from "@linaria/react";
+import { useRef, useState } from "react";
 
-import IconButton from "../../ui/button/IconButton";
-import SlideOutMenu from "../../ui/menu/SlideOutMenu";
-import Logo from "../Logo";
 import { useAuth } from "../../auth/AuthProvider";
-import spacing from "../../ui/styles/spacing";
-import Icons from "../../ui/icons/Icons";
+import IconButton from "../../ui/button/IconButton";
+import Dropdown from "../../ui/dropdown/Dropdown";
+import DropdownItem, {
+  DropdownItemDivider,
+} from "../../ui/dropdown/DropdownItem";
 import Icon from "../../ui/icons/Icon";
+import spacing from "../../ui/styles/spacing";
+import { cssvar, vars } from "../../ui/theme/vars";
 import Typography from "../../ui/typography/Typography";
-import Button from "../../ui/button/Button";
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const Footer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing.lg.px};
-`;
 
 const UserInfo = styled.div`
   display: flex;
@@ -33,52 +23,62 @@ const Name = styled.div`
   flex-direction: column;
 `;
 
-interface UserSettingsMenuProps {
-  isOpen: boolean;
-  onClickClose(): void;
-}
+const MediumFlex = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing.md.px};
+`;
 
-export default function UserSettingsMenu(props: UserSettingsMenuProps) {
+export default function UserSettingsMenu() {
   const { user } = useAuth();
 
-  if (!props.isOpen) {
-    return null;
-  }
+  const anchor = useRef<HTMLButtonElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <SlideOutMenu>
-      {{
-        header: (
-          <Header>
-            <Logo height={20} width={160} beta={false} />
-            <IconButton
-              icon="x-close"
-              size="sm"
-              variant="tertiary"
-              onClick={props.onClickClose}
+    <>
+      <IconButton
+        ref={anchor}
+        icon="menu"
+        variant="tertiary"
+        size="sm"
+        onClick={() => setIsOpen(!isOpen)}
+      />
+
+      <Dropdown isOpen={isOpen} anchor={anchor.current}>
+        <DropdownItem header>
+          <UserInfo>
+            <Icon name="google-logo" />
+            <Name>
+              <Typography variant="text" size="md" weight="600">
+                {user?.displayName}
+              </Typography>
+              <Typography variant="text" size="sm">
+                {user?.email}
+              </Typography>
+            </Name>
+          </UserInfo>
+        </DropdownItem>
+        <DropdownItemDivider />
+        <DropdownItem>
+          <MediumFlex>
+            <Icon
+              name="logout"
+              style={{
+                color: cssvar(vars.colors.foreground.quaternary.main),
+              }}
             />
-          </Header>
-        ),
-        body: <></>,
-        footer: (
-          <Footer>
-            <UserInfo>
-              <Icon name="google-logo" />
-              <Name>
-                <Typography variant="text" size="md" weight="600">
-                  {user?.displayName}
-                </Typography>
-                <Typography variant="text" size="sm">
-                  {user?.email}
-                </Typography>
-              </Name>
-            </UserInfo>
-            <Button variant="primary" size="sm">
-              Logout
-            </Button>
-          </Footer>
-        ),
-      }}
-    </SlideOutMenu>
+            <Typography
+              variant="text"
+              size="sm"
+              weight="500"
+              style={{ color: cssvar(vars.colors.text.secondary.main) }}
+            >
+              Log out
+            </Typography>
+          </MediumFlex>
+        </DropdownItem>
+      </Dropdown>
+    </>
   );
 }

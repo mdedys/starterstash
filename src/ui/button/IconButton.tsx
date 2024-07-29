@@ -1,6 +1,6 @@
 import { cx, css } from "@linaria/core";
 import { styled } from "@linaria/react";
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 import * as styles from "./styles";
 import Icons from "../icons/Icons";
@@ -35,25 +35,35 @@ const Button = styled.button`
   justify-content: center;
 
   border-radius: ${border.md};
+  cursor: pointer;
 `;
 
 interface IconButtonProps extends Props, ComponentPropsWithoutRef<"button"> {
   icon: keyof typeof Icons;
 }
 
-export default function IconButton(props: IconButtonProps) {
-  const { className, icon, variant = "primary", size = "lg", ...rest } = props;
-  const Icon = Icons[icon];
+export default forwardRef<HTMLButtonElement, IconButtonProps>(
+  function IconButton(props, ref) {
+    const {
+      className,
+      icon,
+      variant = "primary",
+      size = "lg",
+      ...rest
+    } = props;
+    const Icon = Icons[icon];
 
-  // @ts-expect-error - We are omitting link on purpose
-  const colorVariant = styles.color[variant];
+    // @ts-expect-error - We are omitting link on purpose
+    const colorVariant = styles.color[variant];
 
-  return (
-    <Button
-      className={cx(className, sizeVariant[size], colorVariant)}
-      {...rest}
-    >
-      <Icon />
-    </Button>
-  );
-}
+    return (
+      <Button
+        ref={ref}
+        className={cx(className, sizeVariant[size], colorVariant)}
+        {...rest}
+      >
+        <Icon />
+      </Button>
+    );
+  },
+);
