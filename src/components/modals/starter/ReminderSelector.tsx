@@ -1,10 +1,10 @@
-import { styled } from "@linaria/react";
+import { spacing } from "@dedees/ui-kit/styles";
+import { Typography } from "@dedees/ui-kit/typography";
 import { DateTime } from "luxon";
+import { styled } from "styled-components";
 
 import DatePicker from "../../../ui/datetime/DatePicker";
 import TimePicker from "../../../ui/datetime/TimePicker";
-import spacing from "../../../ui/styles/spacing";
-import Typography from "../../../ui/typography/Typography";
 
 const Row = styled.div`
   display: flex;

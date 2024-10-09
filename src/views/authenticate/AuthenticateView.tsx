@@ -1,12 +1,12 @@
-import { styled } from "@linaria/react";
+import { Button } from "@dedees/ui-kit/button";
+import { Grid } from "@dedees/ui-kit/layout";
+import { Typography } from "@dedees/ui-kit/typography";
 import { Navigate } from "react-router-dom";
+import { styled } from "styled-components";
 
 import LoafAsset from "../../assets/loaf.png";
 import { useAuth } from "../../auth/AuthProvider";
 import Logo from "../../components/Logo";
-import Button from "../../ui/button/Button";
-import Grid from "../../ui/layout/Grid";
-import Typography from "../../ui/typography/Typography";
 import paths from "../paths";
 
 const Centered = styled.div`

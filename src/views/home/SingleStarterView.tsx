@@ -1,18 +1,16 @@
-import { styled } from "@linaria/react";
+import { Button } from "@dedees/ui-kit/button";
+import { spacing } from "@dedees/ui-kit/styles";
+import { Typography } from "@dedees/ui-kit/typography";
 import { useState } from "react";
+import { styled } from "styled-components";
 
 import StarterJar from "../../assets/starter_jar.svg";
-import Logo from "../../components/Logo";
 import DeleteConfirmationModal from "../../components/modals/starter/DeleteConfirmationmModal";
 import StarterEditorModal from "../../components/modals/starter/StarterEditorModal";
 import { Starter } from "../../state/models/Users";
 import useDeleteStarter from "../../state/mutations/useDeleteStarter";
 import useUpdateStarter from "../../state/mutations/useUpdateStarter";
-import Button from "../../ui/button/Button";
-import IconButton from "../../ui/button/IconButton";
-import spacing from "../../ui/styles/spacing";
-import Typography from "../../ui/typography/Typography";
-import { Body, Header, Layout } from "../Layout";
+import { View } from "../Layout";
 
 const Center = styled.div`
   display: flex;
@@ -54,32 +52,26 @@ export default function SingleStarterView(props: SingleStarterViewProps) {
 
   return (
     <>
-      <Layout>
-        <Header>
-          <Logo />
-          <IconButton icon="menu" variant="tertiary" size="sm" />
-        </Header>
-        <Body>
-          <Center>
-            <Typography variant="display" size="sm" weight="600">
-              {props.starter.name}
-            </Typography>
-            <Graphic src={StarterJar} alt="jar of sourdough starter" />
-            <Typography variant="text" size="md" weight="600">
-              Next Feeding
-            </Typography>
-            <Typography variant="text" size="md">
-              {props.starter.reminder.toFormat("LLL d, yyyy H:mm a")}
-            </Typography>
-            <ButtonGroup>
-              <Button variant="primary">Feed</Button>
-              <Button variant="secondary" onClick={() => setIsModalOpen(true)}>
-                Edit
-              </Button>
-            </ButtonGroup>
-          </Center>
-        </Body>
-      </Layout>
+      <View>
+        <Center>
+          <Typography variant="display" size="sm" weight="600">
+            {props.starter.name}
+          </Typography>
+          <Graphic src={StarterJar} alt="jar of sourdough starter" />
+          <Typography variant="text" size="md" weight="600">
+            Next Feeding
+          </Typography>
+          <Typography variant="text" size="md">
+            {props.starter.reminder.toFormat("LLL d, yyyy H:mm a")}
+          </Typography>
+          <ButtonGroup>
+            <Button variant="primary">Feed</Button>
+            <Button variant="secondary" onClick={() => setIsModalOpen(true)}>
+              Edit
+            </Button>
+          </ButtonGroup>
+        </Center>
+      </View>
       {isModalOpen && (
         <StarterEditorModal
           mode="edit"

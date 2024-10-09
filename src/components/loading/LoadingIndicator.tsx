@@ -1,5 +1,6 @@
+import { LottiePlayer } from "@dedees/ui-kit/lottie";
+
 import LottieJSON from "../../assets/loading-toast.json";
-import LottiePlayer from "../../ui/lottie/LottiePlayer";
 
 type SizeVariant = "sm" | "md" | "lg";
 

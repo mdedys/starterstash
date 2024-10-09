@@ -1,6 +1,6 @@
-import { styled } from "@linaria/react";
 import { useState } from "react";
 import { Navigate, Outlet, useLocation, useMatch } from "react-router-dom";
+import { styled } from "styled-components";
 
 import paths from "./paths";
 import { useAuth } from "../auth/AuthProvider";

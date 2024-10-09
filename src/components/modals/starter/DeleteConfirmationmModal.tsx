@@ -1,10 +1,9 @@
-import { styled } from "@linaria/react";
-
-import Button from "../../../ui/button/Button";
-import Modal from "../../../ui/modal/Modal";
-import spacing from "../../../ui/styles/spacing";
-import { cssvar, vars } from "../../../ui/theme/vars";
-import Typography from "../../../ui/typography/Typography";
+import { Button } from "@dedees/ui-kit/button";
+import { Modal } from "@dedees/ui-kit/modal";
+import { spacing, widths } from "@dedees/ui-kit/styles";
+import { vars, cssvar } from "@dedees/ui-kit/theme";
+import { Typography } from "@dedees/ui-kit/typography";
+import { styled } from "styled-components";
 
 const Header = styled.div`
   border-bottom: 1px solid ${cssvar(vars.colors.border.secondary)};
@@ -38,7 +37,7 @@ export default function DeleteConfirmationModal(
   props: DeleteConfirmationModalProps,
 ) {
   return (
-    <Modal>
+    <Modal maxWidth={widths.lg.px}>
       <Header>
         <Typography variant="text" size="lg" weight="600">
           Delete Starter Confirmation

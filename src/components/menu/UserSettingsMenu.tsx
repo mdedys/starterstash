@@ -1,16 +1,17 @@
-import { styled } from "@linaria/react";
+import { IconButton } from "@dedees/ui-kit/button";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownItemDivider,
+} from "@dedees/ui-kit/dropdown";
+import { Icon } from "@dedees/ui-kit/icons";
+import { spacing } from "@dedees/ui-kit/styles";
+import { cssvar, vars } from "@dedees/ui-kit/theme";
+import { Typography } from "@dedees/ui-kit/typography";
 import { useRef, useState } from "react";
+import { styled } from "styled-components";
 
 import { useAuth } from "../../auth/AuthProvider";
-import IconButton from "../../ui/button/IconButton";
-import Dropdown from "../../ui/dropdown/Dropdown";
-import DropdownItem, {
-  DropdownItemDivider,
-} from "../../ui/dropdown/DropdownItem";
-import Icon from "../../ui/icons/Icon";
-import spacing from "../../ui/styles/spacing";
-import { cssvar, vars } from "../../ui/theme/vars";
-import Typography from "../../ui/typography/Typography";
 
 const UserInfo = styled.div`
   display: flex;

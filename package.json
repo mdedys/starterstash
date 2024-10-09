@@ -18,19 +18,17 @@
     "firebase": "firebase"
   },
   "dependencies": {
-    "@linaria/core": "~6.2.0",
-    "@linaria/react": "~6.2.1",
+    "@dedees/ui-kit": "0.1.0-rc1",
     "firebase": "~10.12.2",
     "lottie-web": "~5.12.2",
     "luxon": "~3.4.4",
     "react": "~18.2.0",
     "react-dom": "~18.2.0",
     "react-router-dom": "~6.23.1",
+    "styled-components": "~6.1.13",
     "uuid": "~10.0.0"
   },
   "devDependencies": {
-    "@babel/preset-react": "~7.24.7",
-    "@babel/preset-typescript": "~7.24.7",
     "@types/luxon": "^3",
     "@types/node": "~20.14.2",
     "@types/react": "~18.2.43",
@@ -39,8 +37,6 @@
     "@typescript-eslint/eslint-plugin": "~6.14.0",
     "@typescript-eslint/parser": "~6.14.0",
     "@vitejs/plugin-react": "~4.2.1",
-    "@wyw-in-js/babel-preset": "~0.5.3",
-    "@wyw-in-js/vite": "~0.5.3",
     "eslint": "~8.55.0",
     "eslint-config-prettier": "~9.1.0",
     "eslint-plugin-import": "~2.29.1",
@@ -55,5 +51,8 @@
     "vite": "~5.0.8",
     "vite-plugin-pwa": "~0.20.0"
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.5.0",
+  "resolutions": {
+    "@dedees/ui-kit": "portal:/Users/mashingmike/github/mdedys/snickers-ui"
+  }
 }

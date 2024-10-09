@@ -1,8 +1,7 @@
-import { styled } from "@linaria/react";
+import { Button } from "@dedees/ui-kit/button";
 import { DateTime } from "luxon";
 import { ChangeEvent, useRef } from "react";
-
-import Button from "../button/Button";
+import { styled } from "styled-components";
 
 const Wrapper = styled.div`
   display: inline;

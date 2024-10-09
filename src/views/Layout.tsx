@@ -1,10 +1,10 @@
-import { styled } from "@linaria/react";
+import { Grid } from "@dedees/ui-kit/layout";
+import { spacing } from "@dedees/ui-kit/styles";
 import { PropsWithChildren } from "react";
+import { styled } from "styled-components";
 
 import Logo from "../components/Logo";
 import UserSettingsMenu from "../components/menu/UserSettingsMenu";
-import Grid from "../ui/layout/Grid";
-import spacing from "../ui/styles/spacing";
 
 export const Header = styled.div`
   display: flex;

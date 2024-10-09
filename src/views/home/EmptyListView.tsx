@@ -1,16 +1,13 @@
-import { styled } from "@linaria/react";
+import { Button } from "@dedees/ui-kit/button";
+import { widths } from "@dedees/ui-kit/styles";
+import { Typography } from "@dedees/ui-kit/typography";
 import { useState } from "react";
+import { styled } from "styled-components";
 
 import StarterJar from "../../assets/starter_jar.svg";
-import Logo from "../../components/Logo";
-import UserSettingsMenu from "../../components/menu/UserSettingsMenu";
 import StarterEditorModal from "../../components/modals/starter/StarterEditorModal";
 import useAddStarter from "../../state/mutations/useAddStarter";
-import Button from "../../ui/button/Button";
-import IconButton from "../../ui/button/IconButton";
-import widths from "../../ui/styles/widths";
-import Typography from "../../ui/typography/Typography";
-import { Body, Header, Layout, View } from "../Layout";
+import { View } from "../Layout";
 
 const Content = styled.div`
   display: flex;

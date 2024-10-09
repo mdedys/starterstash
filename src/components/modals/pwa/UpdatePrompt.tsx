@@ -1,12 +1,11 @@
-import { styled } from "@linaria/react";
+import { Button } from "@dedees/ui-kit/button";
+import { Modal } from "@dedees/ui-kit/modal";
+import { spacing } from "@dedees/ui-kit/styles";
+import { cssvar, vars } from "@dedees/ui-kit/theme";
+import { Typography } from "@dedees/ui-kit/typography";
+import { styled } from "styled-components";
 /* eslint-disable-next-line */
 import { useRegisterSW } from "virtual:pwa-register/react";
-
-import Button from "../../../ui/button/Button";
-import Modal from "../../../ui/modal/Modal";
-import spacing from "../../../ui/styles/spacing";
-import { cssvar, vars } from "../../../ui/theme/vars";
-import Typography from "../../../ui/typography/Typography";
 
 const Header = styled.div`
   border-bottom: 1px solid ${cssvar(vars.colors.border.secondary)};

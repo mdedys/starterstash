@@ -1,18 +1,18 @@
-import { styled } from "@linaria/react";
+import { Button } from "@dedees/ui-kit/button";
+import { Checkbox } from "@dedees/ui-kit/checkbox";
+import { Divider } from "@dedees/ui-kit/divider";
+import { Modal } from "@dedees/ui-kit/modal";
+import { spacing, widths } from "@dedees/ui-kit/styles";
+import { Textfield } from "@dedees/ui-kit/textfield";
+import { cssvar, vars } from "@dedees/ui-kit/theme";
+import { Typography } from "@dedees/ui-kit/typography";
+import { styled } from "styled-components";
 import { v4 as uuid } from "uuid";
 
 import ReminderSelector from "./ReminderSelector";
 import Summary from "./Summary";
 import useStarterForm from "./useStarterForm";
 import { Starter } from "../../../state/models/Users";
-import Button from "../../../ui/button/Button";
-import Checkbox from "../../../ui/checkbox/Checkbox";
-import Divider from "../../../ui/divider/Divider";
-import Modal from "../../../ui/modal/Modal";
-import spacing from "../../../ui/styles/spacing";
-import Textfield from "../../../ui/textfield/Textfield";
-import { cssvar, vars } from "../../../ui/theme/vars";
-import Typography from "../../../ui/typography/Typography";
 
 const Header = styled.div`
   border-bottom: 1px solid ${cssvar(vars.colors.border.secondary)};
@@ -72,7 +72,7 @@ export default function StarterEditorModal(props: AddStarterModalProps) {
   /** RENDER */
 
   return (
-    <Modal>
+    <Modal maxWidth={widths.lg.px}>
       <Header>
         <Typography variant="text" size="lg" weight="600">
           {props.mode === "new" ? "Create" : "Edit"} Sourdough Starter

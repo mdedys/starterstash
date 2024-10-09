@@ -1,11 +1,10 @@
-import { styled } from "@linaria/react";
+import { spacing, border } from "@dedees/ui-kit/styles";
+import { cssvar, vars } from "@dedees/ui-kit/theme";
+import { Typography } from "@dedees/ui-kit/typography";
 import { CSSProperties } from "react";
+import { styled } from "styled-components";
 
 import StarterStash from "../assets/starterstash.svg";
-import border from "../ui/styles/border";
-import spacing from "../ui/styles/spacing";
-import { cssvar, vars } from "../ui/theme/vars";
-import Typography from "../ui/typography/Typography";
 
 const Flex = styled.div`
   display: flex;

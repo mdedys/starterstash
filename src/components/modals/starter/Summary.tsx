@@ -1,8 +1,7 @@
-import { styled } from "@linaria/react";
+import { cssvar, vars } from "@dedees/ui-kit/theme";
+import { Typography } from "@dedees/ui-kit/typography";
 import { DateTime } from "luxon";
-
-import { cssvar, vars } from "../../../ui/theme/vars";
-import Typography from "../../../ui/typography/Typography";
+import { styled } from "styled-components";
 
 const List = styled.ul`
   padding-left: 20px;
